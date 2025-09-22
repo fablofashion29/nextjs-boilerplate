@@ -34,6 +34,7 @@ export default function ProductCard({ product, onAdd }: Props) {
       <div className="flex items-center justify-between mt-3">
         <div className="font-medium">{(product.price / 100).toLocaleString(undefined, { style: 'currency', currency: 'USD' })}</div>
         <button
+          type="button"
           onClick={() => onAdd(product)}
           className="bg-black text-white rounded px-3 py-1 text-sm hover:opacity-90"
         >
