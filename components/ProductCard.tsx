@@ -9,11 +9,19 @@ type Props = {
 };
 
 export default function ProductCard({ product, onAdd }: Props) {
+  console.log("Rendering product:", product);
+  console.log("Product image URL:", product.image);
   return (
     <div className="border rounded-lg p-4 flex flex-col gap-3">
       <div className="w-full h-40 relative bg-gray-100 flex items-center justify-center rounded">
         {product.image ? (
-          <Image src={product.image} alt={product.name} width={120} height={120} />
+          <Image
+            src={product.image}
+            alt={product.name}
+            width={120}
+            height={120}
+            unoptimized // allow external full URLs
+          />
         ) : (
           <div className="text-sm text-gray-500">No image</div>
         )}

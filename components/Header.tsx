@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Image from "next/image";
 
 type Props = {
   cartCount: number;
@@ -8,8 +9,17 @@ type Props = {
 
 export default function Header({ cartCount, onToggleCart }: Props) {
   return (
-    <header className="w-full flex items-center justify-between py-4">
-      <div className="text-xl font-bold">Fablo Fashion</div>
+    <header className="w-full flex items-center justify-between py-2">
+      <a href="/" className="flex items-center gap-2">
+        <Image
+          className="dark:invert"
+          src="/fablo-fashion.png"
+          alt="Fablo Fashion Logo"
+          width={401}
+          height={143}
+          priority
+        />
+      </a>
       <div className="flex items-center gap-4">
         <button
           onClick={onToggleCart}
