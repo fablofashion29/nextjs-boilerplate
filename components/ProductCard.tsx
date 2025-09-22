@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import { Product } from "../lib/products";
 
@@ -13,7 +14,7 @@ export default function ProductCard({ product, onAdd }: Props) {
   console.log("Product image URL:", product.image);
   return (
     <div className="border rounded-lg p-4 flex flex-col gap-3">
-      <div className="w-full h-40 relative bg-gray-100 flex items-center justify-center rounded">
+      <Link href={`/products/${product.id}`} className="w-full h-40 relative bg-gray-100 flex items-center justify-center rounded overflow-hidden">
         {product.image ? (
           <Image
             src={product.image}
@@ -25,9 +26,9 @@ export default function ProductCard({ product, onAdd }: Props) {
         ) : (
           <div className="text-sm text-gray-500">No image</div>
         )}
-      </div>
+      </Link>
       <div className="flex-1">
-        <h3 className="font-semibold">{product.name}</h3>
+  <h3 className="font-semibold"><Link href={`/products/${product.id}`} className="hover:underline">{product.name}</Link></h3>
         <p className="text-sm text-gray-600 mt-1">{product.description}</p>
       </div>
       <div className="flex items-center justify-between mt-3">
