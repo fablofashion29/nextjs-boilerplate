@@ -4,7 +4,7 @@ import { fetchEntries } from "../lib/contentful";
 import { client } from '../lib/contentful'; 
 
 type CFProductFields = {
-  title: string;
+  name: string;
   price: number; // stored as number in your content model
   description?: string;
   image?: { fields: { file: { url: string } } }; // adjust to your model

@@ -1,4 +1,4 @@
-import { createClient, EntryCollection } from "contentful";
+import { createClient, EntryCollection, EntrySkeletonType } from "contentful";
 
 const space = process.env.CONTENTFUL_SPACE_ID || "";
 const accessToken = process.env.CONTENTFUL_CDA_TOKEN || "";
@@ -13,7 +13,7 @@ export const client = createClient({
   accessToken,
 });
 
-export async function fetchEntries<T = any>(query = {}): Promise<EntryCollection<T> | null> {
+export async function fetchEntries<Fields extends Record<string, any> = Record<string, any>>(query = {}): Promise<EntryCollection<EntrySkeletonType<Fields>> | null> {
   if (!space || !accessToken) return null;
-  return client.getEntries<T>(query as any);
+  return client.getEntries<EntrySkeletonType<Fields>>(query as any);
 }
