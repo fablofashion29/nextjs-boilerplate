@@ -29,8 +29,8 @@ export default function RootLayout({
         <meta charSet="UTF-8" />
         <link rel="shortcut icon" href="/fablo-favicon.png" type="image/png" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>{metadata.title}</title>
-        <meta name="description" content={metadata.description} />
+        <title>Fablo Fashion</title>
+        <meta name="description" content="Shop the latest trends in fashion at Fablo." />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
