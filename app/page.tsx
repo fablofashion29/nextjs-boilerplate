@@ -52,6 +52,7 @@ export default async function Home() {
   const entries = await fetchEntries<CFProductFields>({ content_type: "pageProduct" });
   const products = await mapEntriesToProductsAsync(entries);
   console.log("Fetched products:", products);
+  
   return (
     <div className="font-sans grid grid-rows-[auto_1fr_auto] items-center justify-items-center min-h-screen">
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start w-full">
