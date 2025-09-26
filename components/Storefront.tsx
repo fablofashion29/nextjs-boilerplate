@@ -4,6 +4,7 @@ import ProductCard from "./ProductCard";
 import Header from "./Header";
 import Navigation from "./Navigation";
 import { products as defaultProducts, Product } from "../lib/products";
+import Banner from "./Banner";
 
 type CartItem = { product: Product; quantity: number };
 
@@ -52,7 +53,13 @@ export default function Storefront({ products }: { products?: Product[] }) {
   )}
   <Header cartCount={cart.reduce((s, c) => s + c.quantity, 0)} onToggleCart={() => setCartOpen((v) => !v)} />
   <Navigation />
-
+  {/* Banner with background image */}
+      <Banner 
+        title="Launching Soon"
+        subtitle="Best Kurtis and Suits Collection in affordable Prices"
+        backgroundImage="/images/banner.png"
+        className="min-h-screen flex items-center"
+      />
   {/* If a products prop is provided, check for data. If it's an empty array show fallback message. */}
   {Array.isArray(products) && products.length === 0 ? (
     <div className="py-8 text-center text-gray-600">No products available.</div>
