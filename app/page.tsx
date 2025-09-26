@@ -58,7 +58,7 @@ export default async function Home() {
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start w-full">
         <Storefront products={products}/>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center text-sm text-gray-500">
+      <footer className="row-start-3 flex gap-[24px] mt-5 p-6 flex-wrap items-center justify-center text-sm text-gray-500">
          FabloFashion.com © 2025 
          email your query to fablofashion@outlook.com 
       </footer>
