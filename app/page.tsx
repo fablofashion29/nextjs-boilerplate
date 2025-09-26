@@ -3,6 +3,7 @@ import Storefront from "../components/Storefront";
 import { fetchEntries } from "../lib/contentful";
 import { client } from '../lib/contentful'; 
 
+
 type CFProductFields = {
   name: string;
   price: number; // stored as number in your content model
