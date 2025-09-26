@@ -1,5 +1,5 @@
 "use client";
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import ProductCard from "./ProductCard";
 import Header from "./Header";
 import Navigation from "./Navigation";
@@ -10,6 +10,19 @@ type CartItem = { product: Product; quantity: number };
 export default function Storefront({ products }: { products?: Product[] }) {
   const [cartOpen, setCartOpen] = useState(false);
   const [cart, setCart] = useState<CartItem[]>([]);
+  const [flashMessage, setFlashMessage] = useState<string | null>(null);
+
+  useEffect(() => {
+    try {
+      const msg = sessionStorage.getItem('flashMessage');
+      if (msg) {
+        setFlashMessage(msg);
+        sessionStorage.removeItem('flashMessage');
+      }
+    } catch (e) {
+      // ignore
+    }
+  }, []);
 
   const addToCart = (product: Product) => {
     setCart((prev) => {
@@ -29,6 +42,14 @@ export default function Storefront({ products }: { products?: Product[] }) {
 
   return (
     <div className="max-w-5xl mx-auto w-full">
+  {flashMessage && (
+    <div className="bg-green-50 border border-green-200 text-green-800 p-3 rounded mb-4">
+      <div className="flex items-center justify-between">
+        <div>{flashMessage}</div>
+        <button onClick={() => setFlashMessage(null)} className="text-sm text-green-700 underline">Dismiss</button>
+      </div>
+    </div>
+  )}
   <Header cartCount={cart.reduce((s, c) => s + c.quantity, 0)} onToggleCart={() => setCartOpen((v) => !v)} />
   <Navigation />
 

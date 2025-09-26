@@ -18,10 +18,20 @@ export default function LoginPage() {
         body: JSON.stringify({ email, password }),
       });
       const data = await res.json();
+      console.log('Login response:', data);
       if (!res.ok) throw new Error(data.error || 'Login failed');
-      setMessage('Logged in as ' + data.user.email);
+      const successMessage = 'Logged in as ' + data.user.email;
+      setMessage(successMessage);
       setEmail('');
       setPassword('');
+      // persist the flash message so the homepage can show it after redirect
+      try {
+        sessionStorage.setItem('flashMessage', successMessage);
+      } catch (e) {
+        // ignore if storage not available
+      }
+      // simple redirect to home after successful login
+      window.location.href = '/';
     } catch (err: any) {
       setMessage(err.message || 'Login failed');
     } finally {
