@@ -6,6 +6,7 @@ import Navigation from "./Navigation";
 import { products as defaultProducts, Product } from "../lib/products";
 import Banner from "./Banner";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 type CartItem = { product: Product; quantity: number };
 
@@ -72,6 +73,9 @@ const router = useRouter()
         backgroundImage="/images/banner.png"
         className="min-h-screen flex items-center"
       />
+       <div className="block md:hidden relative">
+        <Image src="/images/banner-mobile.png" alt="Banner"  width={300} height={145}/>
+    </div>
   {/* If a products prop is provided, check for data. If it's an empty array show fallback message. */}
   {Array.isArray(products) && products.length === 0 ? (
     <div className="py-8 text-center text-gray-600">No products available.</div>
