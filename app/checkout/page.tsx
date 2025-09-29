@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 // import { Button } from "@/components/ui/button";
-// import { ArrowLeft } from "lucide-react"
+import { ArrowLeft } from "lucide-react";
 
 export default function CheckoutPage() {
   return (
@@ -9,6 +9,7 @@ export default function CheckoutPage() {
       <div className="max-w-2xl w-full space-y-6">
         <Link href="/" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground">
           {/* <ArrowLeft className="h-4 w-4" /> */}
+            <ArrowLeft className="h-4 w-4" />
           Back to Products
         </Link>
 
