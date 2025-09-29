@@ -22,6 +22,7 @@ export default function ProductCard({ product, onAdd }: Props) {
      // Simulate adding to cart (replace with your actual cart logic)
     await new Promise((resolve) => setTimeout(resolve, 1500));
     setIsAdding(false);
+    // window.scrollTo({ top: 0, behavior: "smooth" });
    // setIsAdding(false);
   };
 

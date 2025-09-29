@@ -44,6 +44,7 @@ const router = useRouter()
       }
       return [...prev, { product, quantity: 1 }];
     });
+    setCartOpen(true);
   };
 
   const removeFromCart = (productId: string) => {
