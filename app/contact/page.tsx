@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import PageHeader from "@/components/Page/PageHeader";
 
 export default function ContactPage() {
   const [name, setName] = useState("");
@@ -31,6 +32,7 @@ export default function ContactPage() {
 
   return (
     <main className="max-w-2xl mx-auto py-12 px-4">
+         <PageHeader logoSrc="/fablo-fashion.png" altText="Fablo Fashion Logo" />
       <h1 className="text-3xl font-bold mb-4">Contact</h1>
       <p className="text-gray-700 mb-6">Have questions or want to work with us? Send a message below.</p>
 
