@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import PageHeader from "@/components/Page/PageHeader"
 
 export const metadata = {
   title: "About — Fablo Fashion",
@@ -9,6 +10,7 @@ export const metadata = {
 export default function AboutPage() {
   return (
     <main className="max-w-3xl mx-auto py-12 px-4">
+      <PageHeader logoSrc="/fablo-fashion.png" altText="Fablo Fashion Logo" />
       <h1 className="text-3xl font-bold mb-4">About Fablo Fashion</h1>
       <p className="text-gray-700 mb-6">
         Fablo Fashion is a small, independent brand dedicated to creating
