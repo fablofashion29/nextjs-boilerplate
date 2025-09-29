@@ -5,6 +5,7 @@ import Header from "./Header";
 import Navigation from "./Navigation";
 import { products as defaultProducts, Product } from "../lib/products";
 import Banner from "./Banner";
+import { useRouter } from "next/navigation";
 
 type CartItem = { product: Product; quantity: number };
 
@@ -12,6 +13,7 @@ export default function Storefront({ products }: { products?: Product[] }) {
   const [cartOpen, setCartOpen] = useState(false);
   const [cart, setCart] = useState<CartItem[]>([]);
   const [flashMessage, setFlashMessage] = useState<string | null>(null);
+const router = useRouter()
 
   useEffect(() => {
     try {
@@ -25,7 +27,16 @@ export default function Storefront({ products }: { products?: Product[] }) {
     }
   }, []);
 
-  const addToCart = (product: Product) => {
+  const handleCheckout = () => {
+    // Redirect to checkout page or handle checkout logic
+    console.log('Proceeding to checkout with ' + cart.length + ' items.');
+    router.push("/checkout")
+  };
+
+  const addToCart = async (product: Product) => {
+    setFlashMessage('Product added to cart');
+    sessionStorage.setItem('flashMessage', 'Product added to cart');
+ 
     setCart((prev) => {
       const found = prev.find((p) => p.product.id === product.id);
       if (found) {
@@ -96,7 +107,9 @@ export default function Storefront({ products }: { products?: Product[] }) {
                 <div className="font-semibold">{(total/100).toLocaleString(undefined, { style: 'currency', currency: 'USD' })}</div>
               </div>
 
-              <button className="bg-black text-white py-2 rounded mt-2">Checkout</button>
+              <button className="bg-black text-white cursor-pointer py-2 rounded mt-2" 
+              onClick={handleCheckout}>
+                Checkout</button>
             </div>
           )}
         </aside>

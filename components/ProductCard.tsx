@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { Product } from "../lib/products";
+import { useState } from "react";
 
 type Props = {
   product: Product;
@@ -12,6 +13,18 @@ type Props = {
 export default function ProductCard({ product, onAdd }: Props) {
   console.log("Rendering product:", product);
   console.log("Product image URL:", product.image);
+  const [isAdding, setIsAdding] = useState(false);
+
+  const handleAddToCart = async (product: Product) => {
+    console.log("Adding product to cart:", product);
+    setIsAdding(true);
+    onAdd(product);
+     // Simulate adding to cart (replace with your actual cart logic)
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+    setIsAdding(false);
+   // setIsAdding(false);
+  };
+
   return (
     <div className="border rounded-lg p-4 flex flex-col gap-3">
       <Link href={`/products/${product.id}`} className="w-full h-40 relative bg-gray-100 flex items-center justify-center rounded overflow-hidden">
@@ -35,10 +48,11 @@ export default function ProductCard({ product, onAdd }: Props) {
         <div className="font-medium">{(product.price / 100).toLocaleString(undefined, { style: 'currency', currency: 'USD' })}</div>
         <button
           type="button"
-          onClick={() => onAdd(product)}
-          className="bg-black text-white rounded px-3 py-1 text-sm hover:opacity-90"
+          onClick={() => handleAddToCart(product)}
+          disabled={isAdding}
+          className="bg-black text-white rounded px-3 py-1 cursor-pointer text-sm hover:opacity-90"
         >
-          Add
+          {isAdding ? "Adding..." : "Add to Cart"}
         </button>
       </div>
     </div>
