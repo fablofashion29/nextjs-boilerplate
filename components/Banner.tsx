@@ -20,7 +20,7 @@ const Banner: React.FC<BannerProps> = ({
 
   return (
     <div 
-      className={`relative bg-blue-600 text-white py-10 px-4 my-4 text-center bg-cover bg-center ${className}`}
+      className={`relative bg-blue-600 text-white py-10 px-4 my-4 text-center hidden md:block bg-cover bg-center ${className}`}
       style={bannerStyle}
     >
       {backgroundImage && (
