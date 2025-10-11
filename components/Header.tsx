@@ -13,7 +13,7 @@ export default function Header({ cartCount, onToggleCart }: Props) {
       <a href="/" className="flex items-center gap-2">
         <Image
           className="dark:invert"
-          src="/fablo-fashion-logo.png"
+          src="/fablofashion-logo.png"
           alt="Fablo Fashion Logo"
           width={337}
           height={105}
