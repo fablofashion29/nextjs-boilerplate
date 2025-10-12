@@ -20,21 +20,21 @@ const authItems: NavItem[] = [
   { href: "/register", label: "Register" }
 ];
 
-export default function Navigation() {
+export default function MobileMenu() {
   return (
-    <nav className="navigation flex w-full px-6">
-      <ul className="py-3 text-sm flex gap-4">
+    <nav className="">
+      <ul className="">
         {navItems.map((n) => (
-          <li key={n.href}>
+          <li key={n.href} className="my-2 p-2">
             <a href={n.href} className="text-gray-700 hover:underline">
               {n.label}
             </a>
           </li>
         ))}
       </ul>
-      <ul className="py-3 text-sm ml-auto flex gap-4">
+      <ul className="">
         {authItems.map((n) => (
-          <li key={n.href}>
+          <li key={n.href} className="my-2 p-2">
             <a href={n.href} className="text-gray-700 hover:underline">
               {n.label}
             </a>
