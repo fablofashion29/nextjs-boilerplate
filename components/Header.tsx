@@ -1,16 +1,43 @@
 "use client";
-import React from "react";
+import React, { useState} from "react";
 import Image from "next/image";
+import Navigation from "./Navigation";
+import MobileMenu from "./MobileMenu";
+import { Menu, X } from "lucide-react";
 
-type Props = {
-  cartCount: number;
-  onToggleCart: () => void;
-};
-
-export default function Header({ cartCount, onToggleCart }: Props) {
+export default function Header() {
+  const [isOpen, setIsOpen] = useState(false)
   return (
-    <header className="w-full flex items-center justify-between py-2">
-      <a href="/" className="flex items-center gap-2">
+    <header className="header">
+      <div className="topbar text-center bg-gray-100 py-1">
+        <p className="text-sm text-gray-600">Free shipping on orders over 1500</p>
+      </div>
+      <div className="header-top flex items-center justify-between py-4 px-6">
+        <div className="mobile-nav md:hidden mt-4" onClick={() => setIsOpen(!isOpen)}>
+          {isOpen ? <X size={24} /> : <Menu size={24} />}
+          
+        </div>
+        {/* Mobile Menu Overlay */}
+      {isOpen && (
+       <>
+    
+
+            <div className="mobile-menu absolute top-16 left-0 w-full bg-white shadow-md z-50">
+               <div 
+              onClick={() => setIsOpen(false)}
+              className="mb-8"
+            >
+              <X size={24} />
+            </div>
+              <MobileMenu />
+            </div>
+ 
+           
+
+            </>
+          
+      )}
+      <a href="/" className="logo">
         <Image
           className="dark:invert"
           src="/fablo-fashion-logo.png"
@@ -20,10 +47,10 @@ export default function Header({ cartCount, onToggleCart }: Props) {
           priority
         />
       </a>
-      <div className="flex items-center gap-4">
+      <div className="cart-button-container">
         <button
-          onClick={onToggleCart}
-          className="relative bg-gray-100 px-3 py-1 rounded flex items-center"
+          onClick={() => {}}
+          className="relative px-3 py-1 rounded flex items-center"
           aria-label="Toggle cart"
         >
           <Image
@@ -33,10 +60,12 @@ export default function Header({ cartCount, onToggleCart }: Props) {
             height={24}
             priority
           />
-          {cartCount > 0 && (
-            <span className="absolute -top-2 -right-2 bg-red-600 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">{cartCount}</span>
-          )}
+        
         </button>
+      </div>
+      </div>
+      <div className="header-bottom hidden md:flex w-full">
+      <Navigation />
       </div>
     </header>
   );
