@@ -12,6 +12,7 @@ function SliderComponent({ products }: { products?: Product[] }) {
 const settings = {
     dots: false,
     infinite: false,
+    arrows: false,
     slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: false,
@@ -26,14 +27,13 @@ const settings = {
       ) : (
       <Slider {...settings}>
             {(products && products.length > 0 ? products : defaultProducts).map((product, index) => (
-                <div key={index} className="p-2">
+                <div key={index} className="p-0">
                     {product.image ? (
                         <Image
                             src={product.image}
                             alt={product.name}
                             width={300}
                             height={300}
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             className="w-full h-auto"
                             unoptimized // allow external full URLs
                         />
