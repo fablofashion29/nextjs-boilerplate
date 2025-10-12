@@ -17,6 +17,7 @@ import {
 
 import ProductCard from "@/components/ProductCard";
 import { CarouselDemo } from "@/components/Blocks/Carousel";
+import SliderComponent from "@/components/Blocks/Slider";
 
 type CFProductFields = {
   name: string;
@@ -90,6 +91,10 @@ export default async function Home() {
 
 
   <CarouselDemo products={products} />
+ 
+  </div>
+  <div className="slider-homepage-container flex">
+  <SliderComponent products={products} />
   </div>
     </div>
   );
