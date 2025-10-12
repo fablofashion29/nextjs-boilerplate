@@ -64,8 +64,7 @@ const router = useRouter()
       </div>
     </div>
   )}
-  <Header cartCount={cart.reduce((s, c) => s + c.quantity, 0)} onToggleCart={() => setCartOpen((v) => !v)} />
-  <Navigation />
+
   {/* Banner with background image */}
       <Banner 
         title="Launching Soon"
