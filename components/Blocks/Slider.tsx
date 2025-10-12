@@ -1,5 +1,5 @@
 'use client';
-import React from "react";
+import React, { useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
@@ -7,11 +7,26 @@ import {products as defaultProducts, Product} from "@/lib/products";
 import ProductCard from "../ProductCard";
 import Link from "next/link";
 import Image from "next/image";
+import SliderCard from "../SliderCard";
 
 function SliderComponent({ products }: { products?: Product[] }) {
+  const [isAdding, setIsAdding] = useState(false);
+
+    const handleAddToCart = async (product: Product) => {
+      console.log("Adding product to cart:", product);
+      setIsAdding(true);
+      // onAdd(product);
+       // Simulate adding to cart (replace with your actual cart logic)
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+      setIsAdding(false);
+      // window.scrollTo({ top: 0, behavior: "smooth" });
+     // setIsAdding(false);
+    };
+
 const settings = {
     dots: false,
     infinite: false,
+    arrows: false,
     slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: false,
@@ -26,21 +41,9 @@ const settings = {
       ) : (
       <Slider {...settings}>
             {(products && products.length > 0 ? products : defaultProducts).map((product, index) => (
-                <div key={index} className="p-2">
-                    {product.image ? (
-                        <Image
-                            src={product.image}
-                            alt={product.name}
-                            width={300}
-                            height={300}
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                            className="w-full h-auto"
-                            unoptimized // allow external full URLs
-                        />
-                    ) : (
-                        <div className="text-sm text-gray-500">No image</div>
-                    )}
-                    </div>
+               <div className="productcard-wrapper p-4" key={index}>
+                   <SliderCard product={product} />
+                </div>
             ))}
       </Slider>
          )}

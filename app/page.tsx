@@ -86,14 +86,14 @@ export default async function Home() {
           </div>
 
        
-<div className="carousel-homepage-container flex mx-4 items-center justify-around mb-8 w-full">
+<div className="carousel-homepage-container flex items-center justify-around mb-8 w-full">
   
 
 
   <CarouselDemo products={products} />
  
   </div>
-  <div className="slider-homepage-container flex">
+  <div className="slider-homepage-container flex w-full m-0 p-0 items-center justify-around mb-8">
   <SliderComponent products={products} />
   </div>
     </div>
