@@ -42,11 +42,11 @@ export default function ProductCard({ product, onAdd }: Props) {
         )}
       </Link>
       <div className="flex-1">
-  <h3 className="font-semibold"><Link href={`/products/${product.id}`} className="hover:underline">{product.name}</Link></h3>
+  <h3 className="font-semibold  min-h-12"><Link href={`/products/${product.id}`} className="hover:underline">{product.name}</Link></h3>
         <p className="text-sm text-gray-600 mt-1">{product.description}</p>
       </div>
-      <div className="flex items-center justify-between mt-3">
-        <div className="font-medium">{(product.price / 100).toLocaleString(undefined, { style: 'currency', currency: 'USD' })}</div>
+    <div className="flex items-center justify-between md:justify-around mt-3 flex-col md:flex-row">
+        <div className="font-medium mb-2">{(product.price / 100).toLocaleString(undefined, { style: 'currency', currency: 'USD' })}</div>
         <button
           type="button"
           onClick={() => handleAddToCart(product)}
