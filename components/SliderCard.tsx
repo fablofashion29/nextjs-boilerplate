@@ -40,7 +40,7 @@ export default function SliderCard({ product }: { product: any }) {
       </div>
       <div className="flex items-center justify-between md:justify-around mt-3 flex-col md:flex-row">
         <div className="font-medium mb-2">
-          {(product.price / 100).toLocaleString(undefined, { style: 'currency', currency: 'USD' })}</div>
+          {(product.price).toLocaleString(undefined, { style: 'currency', currency: 'INR' })}</div>
         <button
           type="button"
           onClick={() => handleAddToCart(product)}
